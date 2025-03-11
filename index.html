@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>unleech's Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .container {
+      width: 100%;
+      max-width: 960px;
+      margin: 2em auto;
+      background: #111;
+      padding: 2em;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 1.5em;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #00ff00;
+    }
+    header p {
+      color: #ccc;
+      margin-top: 0.5em;
+    }
+    .project-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      grid-gap: 2em;
+    }
+    .project-item {
+      background: #222;
+      border: 1px solid #333;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+      position: relative;
+      overflow: hidden;
+
+    }
+    .project-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    .project-item img {
+      width: 460px;
+      height: 215px;
+      object-fit: contain;
+      background-color: #111;
+      border-radius: 4px;
+      margin-top: 10px;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .project-item:hover img {
+      opacity: 0.8;
+    }
+    .project-item a {
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+      display: block;
+      margin-top: 0.5em;
+      font-size: 1.1em;
+    }
+    .project-item a:hover {
+      text-decoration: underline;
+    }
+    .description {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: #00ff00;
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .project-item:hover .description {
+      opacity: 1;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 3em;
+      padding-top: 1em;
+      border-top: 1px solid #444;
+      color: #888;
+      font-size: 0.9em;
+    }
+    .footer a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>unleech's Portfolio</h1>
+    <p>Gamer by day, game programmer by night, pro gamer in my dreams</p>
+  </header>
+
+  <section>
+    <ul class="project-list">
+      <li class="project-item">
+        <a href="https://store.steampowered.com/app/2577420/The_Diner_at_the_End_of_the_Galaxy/" target="_blank">
+          <img src="images/diner.jpg" alt="Diner at the End of the Galaxy">
+          <p>Diner at the End of the Galaxy</p>
+        </a>
+        <p class="description">Serving food is the easy part—navigating post-apocalyptic galactic politics? Now that’s a challenge.</p>
+      </li>
+      <li class="project-item">
+        <a href="https://store.steampowered.com/app/1387810/Soup_Pot/" target="_blank">
+          <img src="images/soup.jpg" alt="Soup Pot">
+          <p>Soup Pot</p>
+        </a>
+        <p class="description">Cook, create, and share your culinary journey with over 100 recipes in a vibrant virtual kitchen!</p>
+      </li>
+      <li class="project-item">
+        <a href="https://store.steampowered.com/app/672630/Academia__School_Simulator/" target="_blank">
+          <img src="images/academia.jpg" alt="Academia School Simulator">
+          <p>Academia School Simulator</p>
+        </a>
+        <p class="description">Build the school of your dreams… or let chaos reign as students fend for themselves!</p>
+      </li>
+      <li class="project-item">
+        <a href="https://store.steampowered.com/app/650120/Shots_Fired/" target="_blank">
+          <img src="images/sf.jpg" alt="Shots Fired">
+          <p>Shots Fired</p>
+        </a>
+        <p class="description">Where’s Waldo meets sniper revenge—find your target, take the shot, and uncover the truth.</p>
+      </li>
+      <li class="project-item">
+        <a href="https://store.steampowered.com/app/328220/Wild_Season/" target="_blank">
+          <img src="images/ws.jpg" alt="Wild Season">
+          <p>Wild Season</p>
+        </a>
+        <p class="description">A Harvest Moon-inspired farming sim with a twist—uncover the town's deep mysteries as you build your farm.</p>
+      </li>
+      <li class="project-item">
+        <a href="https://www.youtube.com/watch?v=YxLVQTOg8PU" target="_blank">
+          <img src="images/ninja.jpg" alt="Hayaku Ninja">
+          <p>Hayaku Ninja</p>
+        </a>
+        <p class="description">Catch cakes, dodge bombs! Test your reflexes in this fast-paced ninja challenge!</p>
+      </li>
+      <li class="project-item">
+        <a href="#">
+          <img src="images/cookie.jpg" alt="Amy's Cookies">
+          <p>Amy's Cookies</p>
+        </a>
+        <p class="description">A fun and colorful baking game.</p>
+      </li>
+      <li class="project-item">
+        <a href="#">
+          <img src="images/donut.jpg" alt="Amy's Donut">
+          <p>Amy's Donut</p>
+        </a>
+        <p class="description">Bake and decorate delicious donuts.</p>
+      </li>
+      <li class="project-item">
+        <a href="#">
+          <img src="images/froyo.jpg" alt="Amy's Froyo Series">
+          <p>Amy's Froyo Series</p>
+        </a>
+        <p class="description">Create frozen yogurt masterpieces.</p>
+      </li>
+      <li class="project-item">
+        <a href="#">
+          <img src="images/music.jpg" alt="Sonata – Classical Music Radio">
+          <p>Sonata – Classical Music Radio</p>
+        </a>
+        <p class="description">A relaxing classical music radio app.</p>
+      </li>
+    </ul>
+  </section>
+
+  <div class="footer">
+    <p>Let’s build, create, and game together—hit me up!</p>
+    <p>
+      <a href="https://github.com/unleechGitHub" target="_blank">GitHub</a> |
+      <a href="https://steamcommunity.com/id/unleech/" target="_blank">Steam</a>
+    </p>
+  </div>
+</div>
+</body>
+</html>
