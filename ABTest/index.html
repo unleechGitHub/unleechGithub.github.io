@@ -25,7 +25,31 @@ const keepPending=q=>{try{localStorage.setItem(PENDING,JSON.stringify(q))}catch(
 function warn(text){const el=document.querySelector('#warn');el.textContent=text||'';el.classList.toggle('hidden',!text)}
 function sayPending(n){warn(n?`${n} vote${n>1?'s':''} could not be saved and ${n>1?'are':'is'} waiting to be sent again. Your choices are safe; the shared board will catch up once the server accepts them.`:'')}
 const send=v=>api('icon_votes',{method:'POST',headers:{Prefer:'return=minimal'},body:JSON.stringify(v)});
-async function flush(){const queue=pending();if(!queue.length)return;const left=[];for(const v of queue){try{await send(v)}catch(e){left.push(v)}}keepPending(left);sayPending(left.length)}
+let flushing=false;
+// Two tabs opened at the same instant can both read the queue before either has claimed a vote,
+// so sending is done under a short lease: write a token, read it back, and only the writer that
+// still sees its own token sends. A stale lease (a tab closed mid-send) expires after 15s.
+const LOCK=KEY+'-lock';
+function lease(){try{const me=Math.random().toString(36).slice(2),now=Date.now();
+  const held=JSON.parse(localStorage.getItem(LOCK)||'null');if(held&&now-held.at<15000)return null;
+  localStorage.setItem(LOCK,JSON.stringify({me,at:now}));
+  const back=JSON.parse(localStorage.getItem(LOCK)||'null');return back&&back.me===me?me:null}catch(e){return 'unlocked'}}
+function release(me){try{const held=JSON.parse(localStorage.getItem(LOCK)||'null');
+  if(!held||held.me===me)localStorage.removeItem(LOCK)}catch(e){}}
+// Claim each vote out of the queue BEFORE sending it. Reading the whole queue, sending it, and
+// writing back the failures at the end looks equivalent, but a second tab - or a reload landing
+// mid-flight - reads the same queue and sends every vote a second time. That duplicated a whole
+// session once. A crash between the claim and the send now loses at most the one vote in hand.
+async function flush(){if(flushing)return;flushing=true;const failed=[];const me=lease();
+ if(!me){flushing=false;sayPending(pending().length);return}
+ try{for(;;){const queue=pending();if(!queue.length)break;const vote=queue.shift();keepPending(queue);
+  try{await send(vote)}catch(e){failed.push(vote)}}
+  if(failed.length)keepPending(pending().concat(failed));sayPending(pending().length)}
+ finally{release(me);flushing=false}}
+// The strip follows the queue, not the moment it was written: another tab (or an earlier visit)
+// may have sent what this one is still warning about, and a stale warning is worse than none.
+window.addEventListener('storage',e=>{if(e.key===PENDING)sayPending(pending().length)});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)flush()});
 function sizes(c){return `<div class="sizes">${[64,32,16].map(n=>`<span class="size"><span class="checker"><img src="${c.src}" width="${n}" height="${n}" alt=""></span><small>${n}px</small></span>`).join('')}</div>`}
 function renderVote(){const pair=state.pairs[Math.min(state.round,state.pairs.length-1)];document.querySelector('#round').textContent=`Matchup ${state.round+1} of ${state.pairs.length}`;document.querySelector('#hint').textContent=`${finalists.length} candidates · ${state.pairs.length} direct matchups. Judge clarity and click appeal at every size.`;document.querySelector('#progress').style.width=`${state.round/state.pairs.length*100}%`;document.querySelector('#matchup').innerHTML=pair.map((i,s)=>{const c=finalists[i];return `<button class="candidate" data-index="${i}"><span class="label">Candidate ${s?'B':'A'}</span><span class="hero"><img src="${c.src}" alt="Candidate ${s?'B':'A'}"></span>${sizes(c)}<strong>Choose this icon</strong></button>`}).join('');document.querySelectorAll('.candidate').forEach(b=>b.onclick=()=>vote(+b.dataset.index))}
 async function api(path,options={}){const r=await fetch(SUPABASE_URL+'/rest/v1/'+path,{...options,headers:{apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY,'Content-Type':'application/json',...(options.headers||{})}});if(!r.ok)throw new Error('Shared results are temporarily unavailable');return r.status===204?null:r.json()}
