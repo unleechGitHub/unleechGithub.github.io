@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duel Sound Audition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Alegreya+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column of listening cards, grouped by the brief's core five; each card pairs the old and new take. */
+:root {
+  --bg: #eef0f5;
+  --surface: #ffffff;
+  --fg: #171b2c;
+  --muted: #59607a;
+  --line: #d6dae6;
+  --gold: #8c6414;
+  --before: #4b5b8c;
+  --after: #a8650f;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "Alegreya Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1120; --surface: #161a2d; --fg: #e7e9f3; --muted: #9aa1bd; --line: #2a3050;
+    --gold: #e2b450; --before: #93a6e6; --after: #f0a548; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1120; --surface: #161a2d; --fg: #e7e9f3; --muted: #9aa1bd; --line: #2a3050;
+  --gold: #e2b450; --before: #93a6e6; --after: #f0a548; color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font: 17px/1.5 var(--body); }
+.page { max-width: 820px; margin: 0 auto; padding-inline: 16px; padding-block: 32px 64px; display: grid; gap: 40px; }
+h1, h2 { font-family: var(--display); letter-spacing: .02em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(28px, 6vw, 40px); line-height: 1.1; }
+h2 { font-size: 22px; color: var(--gold); }
+p { margin: 0; max-width: 65ch; }
+.lede { display: grid; gap: 12px; }
+.muted { color: var(--muted); }
+.eyebrow { font: 500 12px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.keys { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; }
+.keys span { display: inline-flex; align-items: center; gap: 8px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.dot.b { background: var(--before); } .dot.a { background: var(--after); }
+section { display: grid; gap: 14px; }
+.intro { color: var(--muted); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: grid; gap: 12px; }
+.card h3 { margin: 0; font-size: 18px; font-weight: 700; }
+.listen { font-size: 15px; color: var(--muted); }
+.listen b { color: var(--fg); font-weight: 500; }
+.takes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 560px) { .takes { grid-template-columns: 1fr; } }
+.take { display: grid; gap: 6px; min-width: 0; }
+.take .label { font: 500 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; display: flex; justify-content: space-between; gap: 8px; }
+.take.b .label { color: var(--before); } .take.a .label { color: var(--after); }
+.take .label span:last-child { color: var(--muted); letter-spacing: 0; text-transform: none; }
+audio { width: 100%; height: 40px; }
+.ab { justify-self: start; font: 500 14px/1 var(--body); color: var(--fg); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+.ab:hover { border-color: var(--gold); }
+.ab:focus-visible, audio:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.findings { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 15px; min-width: 520px; width: 100%; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 500 12px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.num { font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; max-width: 65ch; }
+</style>
+</head><body>
+
+<main class="page">
+  <header class="lede">
+    <div class="eyebrow">Stand Off · Combat VFX Oomph Pass · Sound</div>
+    <h1>Duel Sound Audition</h1>
+    <p>Real in-game recordings of the Enchanted duel: music, ambience, casts, effects, contact and voice lines, exactly as the duel presents each clash. Every pair uses the same clash, seed and volume (all settings at 100%), so the only difference is the sound work.</p>
+    <p class="muted">Listen on phone speakers and on headphones. Except for the Convergence takes, contact lands 1.3 seconds in.</p>
+    <div class="keys"><span><i class="dot b"></i>Before: the current build</span><span><i class="dot a"></i>After: the proposed sound language</span></div>
+  </header>
+
+  <div id="groups"></div>
+
+  <section>
+    <h2>What the audit found</h2>
+    <p class="intro">Measured from the clips and from these recordings, before changing anything.</p>
+    <div class="findings">
+      <table>
+        <thead><tr><th>Sound</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Light, Void, Earth hits</td><td>One shared explosion; peak <span class="num">0.37 s</span> after contact; ~5% of its energy in the range phone speakers play</td><td>Own material each; peak within <span class="num">0.01 s</span>; 53–69%</td></tr>
+          <tr><td>Grass hit</td><td>A rock impact; peak <span class="num">0.20 s</span> late; ~4% phone range</td><td>Fibre snap, vine tear, leaves; 40%</td></tr>
+          <tr><td>Full Guard</td><td>A rock thud, peak <span class="num">0.25 s</span> late; louder than any hit</td><td>Tight shield strike, no thud; sits under a hit</td></tr>
+          <tr><td>Contact vs. the cast before it</td><td>Contact <span class="num">4–9 dB</span> quieter than the cast</td><td>About level on average; most hits now above the cast</td></tr>
+          <tr><td>Procs</td><td>Up to three sounds, a beat apart</td><td>Up to two quiet textures with the contact; one signature (Convergence ready, Phoenix) after it</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="muted">
+      <li>The cast layer was the loudest part of most clashes: the projectile trail prefabs loop their own audio at full volume during flight, and some spell prefabs fire an explosion sound when they spawn. In the Enchanted duel those now sit well under the contact; Classic is unchanged.</li>
+      <li>Lethal hits and Convergence impacts dip the music and ambience briefly instead of getting louder.</li>
+      <li>Musical tones are reserved for the Convergence's three-note motif. The Boon proc is now a tiny glint, and Cleanse and Phoenix have no bells.</li>
+      <li>Fixed on the way: effect prefabs replayed from the pool got quieter on every reuse whenever SFX volume was below 100%.</li>
+    </ul>
+  </section>
+</main>
+
+<script>
+const FILES = {"01": "Equal clash, Fire vs Fire", "02": "Equal clash, Light vs Void", "03": "Light wins a clash and lands", "05": "Fire hit", "07": "Full Guard stops Fire", "09": "Partial Guard, Light breaks through", "10": "Partial Guard, sunny Fire breaks through", "11": "Convergence of Fire, Water, Grass", "12": "Lethal Void hit", "14": "Convergence of Light, Void, Earth", "15": "Convergence into a Guard", "17": "Water hit", "18": "Grass hit", "19": "Void hit", "22": "Earth hit", "23": "Convergence becomes ready"};
+const GROUPS = [
+  { title: "Normal hits", intro: "One shared force (a click and a midrange knock), then each school's material. Short, so the next beat is clear.",
+    cases: [
+      ["05", "Fire hits", "<b>Ignition and roaring pressure</b>, ember crackle in the tail."],
+      ["17", "Water hits", "<b>A compressed splash</b> and liquid slap. The Weaken texture sits under it."],
+      ["18", "Grass hits", "<b>Snapping fibres</b> and scattered leaves instead of a rock. The Seed texture sits under it."],
+      ["22", "Earth hits", "<b>Stone fracture</b> with grit and a compact knock."],
+      ["03", "Light wins a clash and lands", "The meeting crack, then <b>a focused crystalline strike</b> with a short ring."],
+      ["19", "Void hits", "<b>Hollow pressure, an inward suction, an abrupt collapse.</b> The drain texture sits under it."]
+    ] },
+  { title: "Guard", intro: "A full Guard says stopped: no damage weight. A partial Guard adds a brief, rough penetration.",
+    cases: [
+      ["07", "Full Guard stops Fire", "<b>A hard, clean shield strike</b> with a tight ring, quieter than a hit."],
+      ["09", "Partial Guard: Light breaks through", "Shield strike, then <b>a rough tear</b> and a lighter Light hit."],
+      ["10", "Partial Guard: sunny Fire breaks through", "The same shape with Fire's material."]
+    ] },
+  { title: "Equal clash", intro: "Nothing gets through, so there is no body: two forces compress, crack, then dissolve together.",
+    cases: [
+      ["01", "Fire cancels Fire", "<b>Compress, crack, dissolve.</b> Clearly different from a hit."],
+      ["02", "Light cancels Void", "The same cancellation with the premium schools."]
+    ] },
+  { title: "Convergence", intro: "The one musical identity in combat. The wind-up layers the three schools actually earned under a rising tension, with no long chord.",
+    cases: [
+      ["23", "The Convergence becomes ready", "<b>One short three-note motif</b> a beat after the Grass hit, used nowhere else."],
+      ["11", "Convergence of Fire, Water and Grass", "Wind-up: <b>crackle, ripples and roots pulling in</b>. Impact: a wide blast with a short tail of the motif while the music dips."],
+      ["14", "Convergence of Light, Void and Earth", "The same moment built from <b>frost, suction and grit</b>."],
+      ["15", "Convergence into a Guard", "The shield strike, then the Convergence pushing through."]
+    ] },
+  { title: "Lethal hit", intro: "Reinforces the hit's own impact rather than adding music, and leaves room for what is said next.",
+    cases: [
+      ["12", "A lethal Void blow", "<b>A heavier punch under the Void hit</b> while the music and ambience dip for about a second."]
+    ] }
+];
+
+function take(id, kind) {
+  const wrap = document.createElement("div");
+  wrap.className = "take " + (kind === "before" ? "b" : "a");
+  const label = document.createElement("div");
+  label.className = "label";
+  label.innerHTML = `<span>${kind === "before" ? "Before" : "After"}</span><span></span>`;
+  const audio = document.createElement("audio");
+  audio.controls = true;
+  audio.preload = "metadata";
+  audio.src = encodeURI(`${id} ${FILES[id]} - ${kind}.wav`);
+  audio.id = `a${id}${kind[0]}`;
+  wrap.append(label, audio);
+  return [wrap, audio];
+}
+
+const players = [];
+const root = document.getElementById("groups");
+root.style.display = "grid";
+root.style.gap = "40px";
+for (const g of GROUPS) {
+  const s = document.createElement("section");
+  s.innerHTML = `<h2>${g.title}</h2><p class="intro">${g.intro}</p>`;
+  for (const [id, title, listen] of g.cases) {
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `<h3>${title}</h3><p class="listen">Listen for: ${listen}</p>`;
+    const takes = document.createElement("div");
+    takes.className = "takes";
+    const [bw, b] = take(id, "before");
+    const [aw, a] = take(id, "after");
+    takes.append(bw, aw);
+    const ab = document.createElement("button");
+    ab.className = "ab";
+    ab.type = "button";
+    ab.id = `ab${id}`;
+    ab.textContent = "Play before, then after";
+    ab.addEventListener("click", () => {
+      players.forEach(p => p.pause());
+      b.currentTime = 0; a.currentTime = 0;
+      b.onended = () => { b.onended = null; setTimeout(() => a.play().catch(() => {}), 350); };
+      b.play().catch(() => {});
+    });
+    card.append(takes, ab);
+    s.append(card);
+    players.push(b, a);
+  }
+  root.append(s);
+}
+// One take at a time.
+players.forEach(p => p.addEventListener("play", () => players.forEach(o => { if (o !== p) o.pause(); })));
+</script>
+
+</body></html>
