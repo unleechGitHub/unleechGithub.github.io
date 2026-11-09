@@ -63,3 +63,13 @@ document.querySelectorAll('.duelist').forEach((card) => {
   card.addEventListener('focus', () => { if (card.matches(':focus-visible')) play(); });
   card.addEventListener('blur', stop);
 });
+
+// The logo's emblem comes alive once the page has loaded (so it never slows the first paint): an animated copy of
+// just the hexagon is laid over it, its first frame identical to the logo. Never under reduced motion.
+const logoEmblem = document.querySelector('.logo-emblem');
+if (logoEmblem && !calm.matches) {
+  window.addEventListener('load', () => {
+    logoEmblem.addEventListener('load', () => { logoEmblem.hidden = false; }, { once: true });
+    logoEmblem.src = logoEmblem.dataset.motion;
+  });
+}
