@@ -44,3 +44,22 @@ if (viewer && typeof viewer.showModal === 'function') {
     if (opener) opener.focus();
   });
 }
+
+// Duellists: each emblem is a still picture (light to load). Hovering, focusing or tapping a card swaps in its
+// animated version, as the emblem moves in the game; leaving puts the still back. Never under reduced motion.
+const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll('.duellist').forEach((card) => {
+  const image = card.querySelector('img[data-motion]');
+  if (!image) return;
+  const still = image.getAttribute('src');
+  const play = () => { if (!calm.matches) { image.src = image.dataset.motion; card.classList.add('playing'); } };
+  const stop = () => { image.src = still; card.classList.remove('playing'); };
+  // A mouse hovers; a finger taps to start and taps again to stop; the keyboard focuses.
+  card.addEventListener('pointerenter', (event) => { if (event.pointerType === 'mouse') play(); });
+  card.addEventListener('pointerleave', (event) => { if (event.pointerType === 'mouse') stop(); });
+  card.addEventListener('pointerup', (event) => {
+    if (event.pointerType !== 'mouse') (card.classList.contains('playing') ? stop() : play());
+  });
+  card.addEventListener('focus', () => { if (card.matches(':focus-visible')) play(); });
+  card.addEventListener('blur', stop);
+});
