@@ -45,10 +45,10 @@ if (viewer && typeof viewer.showModal === 'function') {
   });
 }
 
-// Duellists: each emblem is a still picture (light to load). Hovering, focusing or tapping a card swaps in its
+// Duelists: each emblem is a still picture (light to load). Hovering, focusing or tapping a card swaps in its
 // animated version, as the emblem moves in the game; leaving puts the still back. Never under reduced motion.
 const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
-document.querySelectorAll('.duellist').forEach((card) => {
+document.querySelectorAll('.duelist').forEach((card) => {
   const image = card.querySelector('img[data-motion]');
   if (!image) return;
   const still = image.getAttribute('src');

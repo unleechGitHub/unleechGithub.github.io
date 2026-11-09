@@ -335,17 +335,17 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
   .brand span { display: none; }
 }
 
-/* ---------------------------------------------------------------- duellists */
+/* ---------------------------------------------------------------- duelists */
 .lede { max-width: 62ch; margin: 14px 0 0; color: var(--muted); }
-.duellists { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 22px); }
-@media (max-width: 980px) { .duellists { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .duellists { grid-template-columns: repeat(2, minmax(0, 1fr)); } .duellist { padding: 14px 12px 4px; } }
-.duellist { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 8px; text-align: center; outline: none; transition: border-color .2s ease; }
-.duellist:hover, .duellist:focus-visible, .duellist.playing { border-color: var(--line-strong); }
-.duellist img { width: min(150px, 70%); height: auto; aspect-ratio: 1; margin: 0 auto 12px; display: block; }
-.duellist h3 { font: 600 1.15rem/1.2 var(--head); margin-bottom: 4px; }
-.duellist .passive { margin: 0 0 8px; color: var(--gold); font: 600 .78rem/1.2 var(--head); letter-spacing: .14em; text-transform: uppercase; }
-.duellist p:last-child { color: var(--muted); font-size: .92rem; }
+.duelists { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 2vw, 22px); }
+@media (max-width: 980px) { .duelists { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .duelists { grid-template-columns: repeat(2, minmax(0, 1fr)); } .duelist { padding: 14px 12px 4px; } }
+.duelist { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 18px 8px; text-align: center; outline: none; transition: border-color .2s ease; }
+.duelist:hover, .duelist:focus-visible, .duelist.playing { border-color: var(--line-strong); }
+.duelist img { width: min(150px, 70%); height: auto; aspect-ratio: 1; margin: 0 auto 12px; display: block; }
+.duelist h3 { font: 600 1.15rem/1.2 var(--head); margin-bottom: 4px; }
+.duelist .passive { margin: 0 0 8px; color: var(--gold); font: 600 .78rem/1.2 var(--head); letter-spacing: .14em; text-transform: uppercase; }
+.duelist p:last-child { color: var(--muted); font-size: .92rem; }
 
 /* ---------------------------------------------------------------- motion */
 @media (prefers-reduced-motion: reduce) {
