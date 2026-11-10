@@ -98,7 +98,7 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 .nav { display: flex; gap: 4px; margin-left: auto; }
 .nav a {
   color: var(--muted); text-decoration: none; font-weight: 500; font-size: 1rem;
-  padding: 10px 12px; border-radius: 999px;
+  padding: 10px 12px; border-radius: 999px; white-space: nowrap;
 }
 .nav a:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
 
@@ -274,6 +274,14 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 }
 .warning h3 { color: #ffcf9a; margin-bottom: 8px; }
 .warning p { margin: 0; }
+.warning p + p { margin-top: 10px; }
+/* Before the steps: the one thing to get right now that the game can also be bought. */
+.first {
+  margin: 0 0 22px; max-width: 860px; padding: 20px 26px;
+  border-radius: var(--radius); border: 1px solid rgba(232, 190, 110, .5); background: rgba(232, 180, 90, .08);
+}
+.first h3 { color: var(--gold-hi); margin-bottom: 8px; }
+.first p { margin: 0; }
 
 /* ---------------------------------------------------------------- help */
 .faq { max-width: 860px; border-top: 1px solid var(--line); }
@@ -295,6 +303,18 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 .contact h3 { margin-bottom: 10px; }
 .contact .links { margin: 0; }
 
+/* ---------------------------------------------------------------- feedback */
+.ways { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2.4vw, 24px); }
+.ways > div { padding: 24px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.ways h3 { margin-bottom: 10px; }
+.ways p { margin-bottom: 10px; }
+.ways p:last-child, .ways .links { margin-bottom: 0; }
+.include { margin-top: clamp(20px, 3vw, 28px); max-width: 860px; padding: 24px 26px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--bg-2); }
+.include h3 { margin-bottom: 10px; }
+.include ul { margin: 0 0 12px; padding-left: 1.2em; }
+.include li { margin-bottom: 6px; }
+.include .note { margin: 0; color: var(--dim); font-size: .95rem; }
+
 /* ---------------------------------------------------------------- footer */
 .site-footer { border-top: 1px solid var(--line); background: #08060e; }
 .foot-inner { max-width: var(--max); margin: 0 auto; padding: 48px var(--gutter) 56px; text-align: center; }
@@ -304,13 +324,17 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 .foot-links a:hover { color: var(--gold-hi); text-decoration: underline; }
 
 /* ---------------------------------------------------------------- responsive */
-@media (max-width: 980px) {
+/* Seven section links fit in one line from about 1120px; narrower, the bar keeps only the brand and Join. */
+@media (max-width: 1120px) {
   .nav { display: none; }
+  .bar { justify-content: space-between; }
+}
+@media (max-width: 980px) {
   .bar { justify-content: space-between; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
-  .trailers, .modes, .contact { grid-template-columns: minmax(0, 1fr); }
+  .trailers, .modes, .contact, .ways { grid-template-columns: minmax(0, 1fr); }
   .feature { grid-template-columns: minmax(0, 1fr); }
   .feature.flip .feature-art { order: 0; }
   .mode-list { grid-template-columns: minmax(0, 1fr); }
@@ -332,7 +356,7 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
   .steps li::before { left: 20px; top: 20px; }
   .steps .btn { width: 100%; }
   .gallery { gap: 10px; }
-  .warning, .contact > div { padding: 20px; }
+  .warning, .contact > div, .ways > div, .include, .first { padding: 20px; }
 }
 @media (max-width: 380px) {
   .brand span { display: none; }
