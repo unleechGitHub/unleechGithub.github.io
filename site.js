@@ -1,4 +1,4 @@
-// Stand Off: Enchanted — small enhancements. Everything works as plain links without this file.
+// StandOff: Enchanted — small enhancements. Everything works as plain links without this file.
 
 // Trailers: each preview is a link to YouTube. With JavaScript, pressing it swaps the preview for the
 // privacy-enhanced player instead, so nothing loads from YouTube until a visitor asks for it.
