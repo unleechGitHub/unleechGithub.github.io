@@ -1,4 +1,20 @@
 /* Stand Off: Enchanted — game page. Dark fantasy: deep night, violet magic, warm gold. */
+/* Fallback faces sized to the web fonts (measured against Cinzel and Alegreya Sans), so the text keeps its size
+   and lines when the fonts arrive: a first visit's swap no longer moves the page (Cloudflare CLS, 13 Nov 2026).
+   A face whose local font is missing is skipped for the next in the stack. */
+@font-face {
+  font-family: 'Cinzel Fallback'; src: local('Georgia');
+  size-adjust: 103.06%; ascent-override: 95.1%; descent-override: 35.9%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Alegreya Sans Fallback'; src: local('Segoe UI');
+  size-adjust: 86.05%; ascent-override: 93%; descent-override: 23.2%; line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Alegreya Sans Fallback 2'; src: local('Roboto'), local('Arial');
+  size-adjust: 83.67%; ascent-override: 95.6%; descent-override: 23.9%; line-gap-override: 0%;
+}
+
 :root {
   color-scheme: dark;
   --bg: #0b0912;
@@ -18,8 +34,8 @@
   --radius: 14px;
   --gutter: clamp(16px, 4.5vw, 48px);
   --max: 1160px;
-  --head: 'Cinzel', 'Trajan Pro', Georgia, serif;
-  --body: 'Alegreya Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --head: 'Cinzel', 'Cinzel Fallback', 'Trajan Pro', Georgia, serif;
+  --body: 'Alegreya Sans', 'Alegreya Sans Fallback', 'Alegreya Sans Fallback 2', system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -139,7 +155,9 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
   text-shadow: 0 2px 14px rgba(0, 0, 0, .7);
   margin-bottom: 12px;
 }
-.tagline span { color: var(--gold); white-space: nowrap; }
+/* The gold beat on its own line: the tagline then wraps the same in Cinzel and in its fallback at any width (it sat
+   right at one line's width, so the font's arrival could add a line and push the hero down). */
+.tagline span { display: block; color: var(--gold); white-space: nowrap; }
 .pitch { max-width: 600px; margin: 0 auto 28px; color: #d6cede; font-size: 1.1rem; text-shadow: 0 2px 12px rgba(0, 0, 0, .8); }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
 .byline { margin: 20px 0 0; font-size: .95rem; color: var(--dim); }
