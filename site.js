@@ -1,8 +1,43 @@
 // StandOff: Enchanted — small enhancements. Everything works as plain links without this file.
 
-// Trailers: each preview is a link to YouTube. With JavaScript, pressing it swaps the preview for the
-// privacy-enhanced player instead, so nothing loads from YouTube until a visitor asks for it.
-document.querySelectorAll('a[data-video]').forEach((link) => {
+// Trailers: each preview is a link to YouTube. With JavaScript, pressing it opens the privacy-enhanced player
+// large, in a viewer over the page (Escape, the close button or a click outside closes it and stops the video);
+// without <dialog> support the preview is swapped for the player in place. Nothing loads from YouTube until a
+// visitor asks for it.
+const player = document.querySelector('.video-viewer');
+const playerFrame = (link) => {
+  const frame = document.createElement('iframe');
+  frame.src = `https://www.youtube-nocookie.com/embed/${link.dataset.video}?autoplay=1&rel=0`;
+  frame.title = link.dataset.title || 'Trailer';
+  frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+  frame.allowFullscreen = true;
+  frame.referrerPolicy = 'strict-origin-when-cross-origin';
+  return frame;
+};
+if (player && typeof player.showModal === 'function') {
+  const box = player.querySelector('.video-box');
+  let opener = null;
+  player.querySelector('.viewer-close').addEventListener('click', () => player.close());
+  player.addEventListener('click', (event) => { if (event.target === player) player.close(); });
+  player.addEventListener('close', () => {
+    box.replaceChildren();          // stops the video
+    if (opener) opener.focus();
+  });
+  document.querySelectorAll('a[data-video]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1) return; // new tab: let it open
+      event.preventDefault();
+      opener = link;
+      player.setAttribute('aria-label', link.dataset.title || 'Video');
+      const frame = playerFrame(link);
+      box.replaceChildren(frame);
+      player.showModal();
+      // Focus on the close button, not inside the player: a key pressed inside YouTube's frame never reaches the
+      // page, so Escape could not close the viewer.
+      player.querySelector('.viewer-close').focus();
+    });
+  });
+} else document.querySelectorAll('a[data-video]').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.button === 1) return; // new tab: let it open
     event.preventDefault();

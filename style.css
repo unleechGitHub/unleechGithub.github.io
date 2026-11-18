@@ -254,6 +254,12 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 .viewer { padding: 0; border: 1px solid var(--line-strong); border-radius: var(--radius); background: #000; max-width: min(1400px, 94vw); width: 100%; }
 .viewer::backdrop { background: rgba(5, 4, 9, .86); }
 .viewer img { width: 100%; height: auto; max-height: 88vh; object-fit: contain; }
+/* A trailer opens large, over the page: 16:9, as wide as the screen allows without running off its height. */
+.video-viewer { width: min(1200px, 94vw, calc(84vh * 16 / 9)); max-width: none; overflow: visible; }
+.video-box { aspect-ratio: 16 / 9; width: 100%; }
+.video-box iframe { display: block; width: 100%; height: 100%; border: 0; border-radius: var(--radius); }
+/* The close button sits above the player, clear of YouTube's own controls. */
+.video-viewer .viewer-close { top: -60px; right: 0; }
 .viewer-close {
   position: absolute; top: 10px; right: 10px; width: 48px; height: 48px;
   border-radius: 50%; border: 1px solid var(--line-strong); background: rgba(11, 9, 18, .8);
