@@ -306,6 +306,12 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 .include li { margin-bottom: 6px; }
 .include .note { margin: 0; color: var(--dim); font-size: .95rem; }
 
+/* ---------------------------------------------------------------- support page */
+.support-intro { max-width: var(--max); margin: 0 auto; padding: clamp(48px, 7vw, 88px) var(--gutter) 0; }
+.support-intro h1 { font: 700 clamp(2rem, 1.3rem + 3vw, 3.2rem)/1.1 var(--head); margin-bottom: 8px; }
+.support-page .section:first-of-type { border-top: 0; }
+.nav a[aria-current="page"] { color: var(--gold-hi); }
+
 /* ---------------------------------------------------------------- footer */
 .site-footer { border-top: 1px solid var(--line); background: #08060e; }
 .foot-inner { max-width: var(--max); margin: 0 auto; padding: 48px var(--gutter) 56px; text-align: center; }
