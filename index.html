@@ -9,13 +9,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="StandOff: Enchanted">
 <meta property="og:title" content="StandOff: Enchanted | Turn-Based Wizard Duels on Android">
-<meta property="og:description" content="A turn-based wizard duel of spells and mind games. Read your rival, choose your magic, win the clash.">
+<meta property="og:description" content="Outsmart your rival. Win the clash. A turn-based wizard duel of spells and mind games, out now on Google Play.">
 <meta property="og:url" content="https://standoffenchanted.fyi/">
 <meta property="og:image" content="https://standoffenchanted.fyi/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="The StandOff: Enchanted logo over two mages facing each other across a moonlit arena">
+<meta property="og:image:alt" content="The StandOff: Enchanted logo and the words Outsmart your rival. Win the clash., beside the blue Wizard facing his rival">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="StandOff: Enchanted | Turn-Based Wizard Duels on Android">
+<meta name="twitter:description" content="Outsmart your rival. Win the clash. A turn-based wizard duel of spells and mind games, out now on Google Play.">
+<meta name="twitter:image" content="https://standoffenchanted.fyi/assets/og-image.jpg">
 <link rel="canonical" href="https://standoffenchanted.fyi/">
 <link rel="icon" href="assets/icon.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,6 +66,15 @@
         "https://play.google.com/store/apps/details?id=com.unleech.standoff"
       ],
       "trailer": [
+        {
+          "@type": "VideoObject",
+          "name": "StandOff: Enchanted gameplay: a duel decided at 2 HP",
+          "description": "Real gameplay: the Wizard against the Thornfury Devil. Fire beats Grass, Earth shatters the Guard, Water leaves Weaken, and two Convergences meet at 2 HP.",
+          "thumbnailUrl": "https://standoffenchanted.fyi/assets/gameplay-poster-1280.webp",
+          "uploadDate": "2026-11-19",
+          "duration": "PT28S",
+          "contentUrl": "https://standoffenchanted.fyi/assets/gameplay-loop-720.mp4"
+        },
         {
           "@type": "VideoObject",
           "name": "StandOff: Enchanted \"Stand Your Ground\" (Official Music Video)",
@@ -115,58 +127,107 @@
       <span>StandOff <em>Enchanted</em></span>
     </a>
     <nav class="nav" aria-label="Sections">
-      <a href="#trailers">Trailers</a>
-      <a href="#game">The game</a>
+      <a href="#how">How it plays</a>
+      <a href="#gameplay">Gameplay</a>
+      <a href="#depth">Depth</a>
       <a href="#modes">Modes</a>
       <a href="#duelists">Duelists</a>
-      <a href="#screenshots">Screenshots</a>
-      <a href="#feedback">Feedback</a>
       <a href="#help">Help</a>
     </nav>
-    <a class="btn btn-gold btn-small" href="#join">Get the game</a>
+    <a class="btn btn-gold btn-small" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank" data-cta="header">Get it on Google Play</a>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- 1. Introduction -->
+  <!-- 1. Hero: the promise, the store, real gameplay -->
   <section class="hero" id="top" aria-labelledby="hero-title">
     <picture class="hero-bg">
       <source type="image/webp" srcset="assets/hero-art-960.webp 960w, assets/hero-art-1872.webp 1872w" sizes="100vw">
       <img src="assets/hero-art-1872.webp" width="1872" height="840" alt="" fetchpriority="high">
     </picture>
-    <div class="hero-inner">
-      <p class="status"><span class="pulse" aria-hidden="true"></span>Out now on Android · Google Play</p>
-      <h1 id="hero-title" class="logo">
-        <img src="assets/logo-1200.webp" srcset="assets/logo-600.webp 600w, assets/logo-1200.webp 1200w" sizes="(max-width: 700px) 88vw, 620px" width="1200" height="388" alt="StandOff: Enchanted">
-        <img class="logo-emblem" data-motion="assets/logo-emblem.webp" width="250" height="250" alt="" hidden>
-      </h1>
-      <p class="tagline">Two duelists. Six schools of magic. <span>One clash at a time.</span></p>
-      <p class="pitch">A turn-based wizard duel where every number is on the table and only your rival’s next choice is hidden. Read them, choose your spell, and turn the clash in your favor.</p>
-      <div class="hero-actions">
-        <a class="play-badge play-badge-large" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank"><img src="assets/google-play-badge.png" width="564" height="168" alt="Get it on Google Play"></a>
-        <a class="btn btn-ghost btn-large" href="#trailers"><span aria-hidden="true" class="tri"></span>Watch the trailers</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="logo">
+          <img src="assets/logo-1200.webp" srcset="assets/logo-600.webp 600w, assets/logo-1200.webp 1200w" sizes="(max-width: 700px) 80vw, 440px" width="1200" height="388" alt="StandOff: Enchanted">
+          <img class="logo-emblem" data-motion="assets/logo-emblem.webp" width="250" height="250" alt="" hidden>
+        </p>
+        <h1 id="hero-title">Outsmart your rival. <span>Win the clash.</span></h1>
+        <p class="pitch">A turn-based wizard duel of spells and mind games. You both choose at once: read what your rival will do, cast the spell that beats it, and turn the duel your way.</p>
+        <div class="hero-actions">
+          <a class="play-badge play-badge-large" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank" data-cta="hero"><img src="assets/google-play-badge.png" width="564" height="168" alt="Get it on Google Play"></a>
+          <a class="btn btn-ghost btn-large" href="#gameplay-video" data-watch><span aria-hidden="true" class="tri"></span>Watch gameplay</a>
+        </div>
+        <p class="byline"><span class="pulse" aria-hidden="true"></span>Out now on Android · Premium fantasy strategy · No ads</p>
       </div>
-      <p class="byline">An independent game by <strong>unleech</strong> · No ads</p>
+      <figure class="hero-video" id="gameplay-video">
+        <div class="video-frame">
+          <video class="gameplay" poster="assets/gameplay-poster-1280.webp" preload="none" playsinline loop controls
+                 data-src-large="assets/gameplay-loop-720.mp4" data-src-small="assets/gameplay-loop-480.mp4" data-src-portrait="assets/gameplay-loop-portrait.mp4" data-poster-portrait="assets/gameplay-poster-portrait.webp" aria-label="Gameplay: a duel decided at 2 HP">
+            <source src="assets/gameplay-loop-480.mp4" type="video/mp4">
+          </video>
+          <button type="button" class="video-start" hidden><span class="play" aria-hidden="true"></span><span class="sr-only">Play the gameplay video with sound</span></button>
+          <button type="button" class="video-sound" hidden aria-pressed="false">Sound on</button>
+        </div>
+        <figcaption>Real gameplay: the Wizard against the Thornfury Devil, decided at 2 HP.</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- 2. Trailers -->
-  <section class="section" id="trailers" aria-labelledby="trailers-title">
+  <!-- 2. The hook in three steps -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="section-head">
+      <p class="kicker">How a duel plays</p>
+      <h2 id="how-title">Victory isn’t luck. <span class="gold">It’s reading your rival.</span></h2>
+    </div>
+    <ol class="beats">
+      <li>
+        <img src="assets/step-choose-800.webp" srcset="assets/step-choose-800.webp 800w, assets/step-choose-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 360px" width="800" height="450" loading="lazy" alt="The start of a duel: both duelists' health and mana at the top, the spell wheel at the right">
+        <h3><span class="beat-num">1</span>Choose your spell</h3>
+        <p>Six schools of magic, plus Guard and Charge. Every spell costs mana, and every number is on the table.</p>
+      </li>
+      <li>
+        <img src="assets/step-read-800.webp" srcset="assets/step-read-800.webp 800w, assets/step-read-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 360px" width="800" height="450" loading="lazy" alt="The Wizard and the Thornfury Devil face off as both prepare their final spell">
+        <h3><span class="beat-num">2</span>Read your rival</h3>
+        <p>You both choose at the same time. Only their next move is hidden: guess what they will do, and pick what beats it.</p>
+      </li>
+      <li>
+        <img src="assets/step-clash-800.webp" srcset="assets/step-clash-800.webp 800w, assets/step-clash-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 360px" width="800" height="450" loading="lazy" alt="A fireball streaks toward a Grass spell in the middle of the arena">
+        <h3><span class="beat-num">3</span>Win the clash</h3>
+        <p>The spells meet and the stronger one wins. Fire has the edge over Grass, Grass over Water, and Water over Fire.</p>
+      </li>
+    </ol>
+    <p class="beat-line">Think rock-paper-scissors with mana, open numbers and effects that last: every choice is a read, not a guess.</p>
+  </section>
+
+  <!-- 3. The game in action -->
+  <section class="section" id="gameplay" aria-labelledby="gameplay-title">
     <div class="section-head">
       <p class="kicker">See it in motion</p>
-      <h2 id="trailers-title">Enter the duel</h2>
+      <h2 id="gameplay-title">Every duel tells <span class="gold">a different story.</span></h2>
     </div>
     <div class="trailers">
       <article class="trailer trailer-feature">
+        <a class="trailer-frame" href="https://www.youtube.com/watch?v=BT8yfz2o8-w" data-video="BT8yfz2o8-w" data-title="StandOff: Enchanted Official Gameplay Trailer" rel="noopener" target="_blank">
+          <img src="assets/trailer-gameplay-1280.webp" srcset="assets/trailer-gameplay-640.webp 640w, assets/trailer-gameplay-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1152px" width="1280" height="720" loading="lazy" alt="A fire devil gathers flame in a sunlit arena, from the gameplay trailer">
+          <span class="play" aria-hidden="true"></span>
+          <span class="sr-only">Play the official gameplay trailer</span>
+        </a>
+        <div class="trailer-copy">
+          <h3>Official gameplay trailer</h3>
+          <p>Spells, clashes, the Arcane Veto and the ways to play.</p>
+          <a class="text-link" href="https://www.youtube.com/watch?v=BT8yfz2o8-w" rel="noopener" target="_blank">Watch on YouTube</a>
+        </div>
+      </article>
+      <article class="trailer">
         <a class="trailer-frame" href="https://www.youtube.com/watch?v=Rv-2TmdNcKw" data-video="Rv-2TmdNcKw" data-title="StandOff: Enchanted &quot;Stand Your Ground&quot; (Official Music Video)" rel="noopener" target="_blank">
-          <img src="assets/video-stand-your-ground-1280.webp" srcset="assets/video-stand-your-ground-640.webp 640w, assets/video-stand-your-ground-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 1152px" width="1280" height="720" loading="lazy" alt="The blue Wizard and the Crimson Magister face to face in their hoods, from the Stand Your Ground music video">
+          <img src="assets/video-stand-your-ground-1280.webp" srcset="assets/video-stand-your-ground-640.webp 640w, assets/video-stand-your-ground-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 380px" width="1280" height="720" loading="lazy" alt="The blue Wizard and the Crimson Magister face to face in their hoods, from the Stand Your Ground music video">
           <span class="play" aria-hidden="true"></span>
           <span class="sr-only">Play the Stand Your Ground music video</span>
         </a>
         <div class="trailer-copy">
-          <h3>&ldquo;Stand Your Ground&rdquo; &middot; official music video</h3>
-          <p>Two rival wizards, one duel, and something older rising from the dark.</p>
+          <h3>&ldquo;Stand Your Ground&rdquo;</h3>
+          <p>The official music video: two rival wizards, one duel, and something older rising from the dark.</p>
           <a class="text-link" href="https://www.youtube.com/watch?v=Rv-2TmdNcKw" rel="noopener" target="_blank">Watch on YouTube</a>
         </div>
       </article>
@@ -183,115 +244,83 @@
         </div>
       </article>
       <article class="trailer">
-        <a class="trailer-frame" href="https://www.youtube.com/watch?v=BT8yfz2o8-w" data-video="BT8yfz2o8-w" data-title="StandOff: Enchanted Official Gameplay Trailer" rel="noopener" target="_blank">
-          <img src="assets/trailer-gameplay-1280.webp" srcset="assets/trailer-gameplay-640.webp 640w, assets/trailer-gameplay-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 380px" width="1280" height="720" loading="lazy" alt="A fire devil gathers flame in a sunlit arena, from the gameplay trailer">
-          <span class="play" aria-hidden="true"></span>
-          <span class="sr-only">Play the official gameplay trailer</span>
-        </a>
-        <div class="trailer-copy">
-          <h3>Official gameplay trailer</h3>
-          <p>Spells, clashes, the Arcane Veto and the ways to play.</p>
-          <a class="text-link" href="https://www.youtube.com/watch?v=BT8yfz2o8-w" rel="noopener" target="_blank">Watch on YouTube</a>
-        </div>
-      </article>
-      <article class="trailer">
         <a class="trailer-frame" href="https://www.youtube.com/watch?v=JE1uVvTyiss" data-video="JE1uVvTyiss" data-title="StandOff: Enchanted Official Cinematic Trailer" rel="noopener" target="_blank">
           <img src="assets/trailer-cinematic-1280.webp" srcset="assets/trailer-cinematic-640.webp 640w, assets/trailer-cinematic-1280.webp 1280w" sizes="(max-width: 860px) 92vw, 380px" width="1280" height="720" loading="lazy" alt="The Lich stands under a night sky, glowing orbs circling it, from the cinematic trailer">
           <span class="play" aria-hidden="true"></span>
           <span class="sr-only">Play the official cinematic trailer</span>
         </a>
         <div class="trailer-copy">
-          <h3>Official cinematic trailer</h3>
+          <h3>Cinematic trailer</h3>
           <p>The Deathless King waits under a moonlit sky.</p>
           <a class="text-link" href="https://www.youtube.com/watch?v=JE1uVvTyiss" rel="noopener" target="_blank">Watch on YouTube</a>
         </div>
       </article>
     </div>
     <p class="note">Videos load from YouTube only when you press play.</p>
+
+    <h3 class="sub-head" id="screenshots">Screenshots</h3>
+    <ul class="gallery">
+      <li><a href="assets/shot-09-hud-1600.webp"><img src="assets/shot-09-hud-800.webp" width="800" height="450" loading="lazy" alt="Mid-duel with the full HUD: both duelists at 2 HP, Water and Fire in the air"></a></li>
+      <li><a href="assets/shot-03-clash-1600.webp"><img src="assets/shot-03-clash-800.webp" width="800" height="450" loading="lazy" alt="Two spells collide between the duelists"></a></li>
+      <li><a href="assets/shot-01-convergence-1600.webp"><img src="assets/shot-01-convergence-800.webp" width="800" height="450" loading="lazy" alt="Convergence strikes the rival"></a></li>
+      <li><a href="assets/shot-05-guard-1600.webp"><img src="assets/shot-05-guard-800.webp" width="800" height="450" loading="lazy" alt="A Guard catches an incoming Grass spell"></a></li>
+      <li><a href="assets/shot-02-planning-1600.webp"><img src="assets/shot-02-planning-800.webp" width="800" height="450" loading="lazy" alt="Planning a turn, with the spell wheel and both duelists’ mana on screen"></a></li>
+      <li><a href="assets/shot-04-arcane-veto-1600.webp"><img src="assets/shot-04-arcane-veto-800.webp" width="800" height="450" loading="lazy" alt="The Arcane Veto with five Arcana cards"></a></li>
+      <li><a href="assets/shot-06-journey-1600.webp"><img src="assets/shot-06-journey-800.webp" width="800" height="450" loading="lazy" alt="The Journey campaign map"></a></li>
+      <li><a href="assets/shot-07-ascendant-trials-1600.webp"><img src="assets/shot-07-ascendant-trials-800.webp" width="800" height="450" loading="lazy" alt="Choosing an Ascendant Trial"></a></li>
+    </ul>
+    <div class="cta-strip">
+      <p>Seen enough? <strong>The duel is waiting.</strong></p>
+      <a class="play-badge" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank" data-cta="gameplay"><img src="assets/google-play-badge.png" width="564" height="168" loading="lazy" alt="Get it on Google Play"></a>
+    </div>
   </section>
 
-  <!-- 3a. Gameplay highlights -->
-  <section class="section" id="game" aria-labelledby="game-title">
+  <!-- 4. The depth, once the appeal is clear -->
+  <section class="section" id="depth" aria-labelledby="depth-title">
     <div class="section-head">
-      <p class="kicker">How a duel plays</p>
-      <h2 id="game-title">The numbers are open. <span class="gold">The next choice isn’t.</span></h2>
+      <p class="kicker">Strategic depth</p>
+      <h2 id="depth-title">Simple to learn. <span class="gold">Challenging to master.</span></h2>
+      <p class="lede">The first duel takes a minute to understand. The next hundred keep finding new answers.</p>
     </div>
-
-    <div class="feature">
-      <figure class="feature-art">
-        <img src="assets/shot-03-clash-1600.webp" srcset="assets/shot-03-clash-800.webp 800w, assets/shot-03-clash-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 640px" width="1600" height="900" loading="lazy" alt="Two spells meet in the middle of the arena as the duelists clash">
-      </figure>
-      <div class="feature-copy">
-        <p class="feature-num">I</p>
-        <h3>Read your rival</h3>
-        <p>Both duelists choose at the same time, then the spells clash. Higher power wins. Think rock-paper-scissors with mana, open numbers and effects that last: every choice is a read, not a guess.</p>
-        <p>Guard blunts an attack, and Charge builds the mana your bigger spells need.</p>
-        <p>Classic duels resolve one spell at a time. Tactical duels lock in three and reveal them together.</p>
-      </div>
-    </div>
-
-    <div class="feature flip">
-      <figure class="feature-art">
-        <img src="assets/shot-01-convergence-1600.webp" srcset="assets/shot-01-convergence-800.webp 800w, assets/shot-01-convergence-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 640px" width="1600" height="900" loading="lazy" alt="Convergence, the finishing spell, bursts against the rival">
-      </figure>
-      <div class="feature-copy">
-        <p class="feature-num">II</p>
+    <div class="cards">
+      <article class="card">
         <h3>Six schools of magic</h3>
         <ul class="schools" aria-label="The six schools">
           <li><span class="sw fire"></span>Fire</li><li><span class="sw water"></span>Water</li><li><span class="sw grass"></span>Grass</li>
           <li><span class="sw light"></span>Light</li><li><span class="sw void"></span>Void</li><li><span class="sw earth"></span>Earth</li>
         </ul>
-        <p>Fire has the edge over Grass, Grass over Water, and Water over Fire. Light cleanses or shields you, Void drains your rival’s mana, and Earth breaks through a Guard.</p>
-        <p>Cast three schools to ready <strong>Convergence</strong>, a finishing spell that carries the effect of every sigil you earned.</p>
-      </div>
-    </div>
-
-    <div class="feature">
-      <figure class="feature-art">
-        <img src="assets/shot-04-arcane-veto-1600.webp" srcset="assets/shot-04-arcane-veto-800.webp 800w, assets/shot-04-arcane-veto-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 640px" width="1600" height="900" loading="lazy" alt="The Arcane Veto: five Arcana cards laid out to seal or keep">
-      </figure>
-      <div class="feature-copy">
-        <p class="feature-num">III</p>
-        <h3>Rules that shift</h3>
-        <p>The Arcane Veto deals Arcana that rewrite the rules of the duel. Reject the ones that hurt you, or bank a seal for later. There are 45 Arcana to discover.</p>
-        <p>The sky changes too: Sunny, Rainy and Full Moon skies each strengthen a school. Burn, Weaken, Seeded, Ward and Stoneguard carry from one clash to the next.</p>
-      </div>
+        <p>Each one has its own strength and its own counter.</p>
+        <details><summary>How they work</summary><p>Fire has the edge over Grass, Grass over Water, and Water over Fire. Light cleanses or shields you, Void drains your rival’s mana, and Earth breaks through a Guard.</p></details>
+      </article>
+      <article class="card">
+        <h3>Mana is everything</h3>
+        <p>Build it, guard it, and spend it when it matters most.</p>
+        <details><summary>Guard and Charge</summary><p>Bigger spells cost more mana. Charge builds the mana they need; Guard blunts an attack. Spend too early and your rival will know you are empty.</p></details>
+      </article>
+      <article class="card">
+        <h3>Master Convergence</h3>
+        <p>Cast three schools to ready a devastating finishing spell.</p>
+        <details><summary>The finisher</summary><p>Convergence carries the effect of every sigil you earned on the way to it, so the schools you cast first shape what it does.</p></details>
+      </article>
+      <article class="card">
+        <h3>Expect the unexpected</h3>
+        <p>Arcana rewrite the rules of a duel and make you rethink your plan.</p>
+        <details><summary>The Arcane Veto</summary><p>The Arcane Veto deals Arcana that change the duel. Reject the ones that hurt you, or bank a seal for later. There are 45 Arcana to discover.</p></details>
+      </article>
+      <article class="card">
+        <h3>Read the battlefield</h3>
+        <p>The sky and lasting effects shape the clashes still to come.</p>
+        <details><summary>Skies and effects</summary><p>Sunny, Rainy and Full Moon skies each strengthen a school. Burn, Weaken, Seeded, Ward and Stoneguard carry from one clash to the next.</p></details>
+      </article>
+      <article class="card">
+        <h3>Two ways to duel</h3>
+        <p>One spell at a time, or three locked in and revealed together.</p>
+        <details><summary>Classic and Tactical</summary><p>Classic duels resolve one spell at a time. Tactical duels lock in three spells and reveal them together, so you plan a whole sequence against your rival’s.</p></details>
+      </article>
     </div>
   </section>
 
-  <!-- 3b. Game modes -->
-  <section class="section" id="modes" aria-labelledby="modes-title">
-    <div class="section-head">
-      <p class="kicker">Five ways to play</p>
-      <h2 id="modes-title">One more rival. <span class="gold">One more climb.</span></h2>
-    </div>
-    <div class="modes">
-      <article class="mode">
-        <img src="assets/shot-06-journey-800.webp" srcset="assets/shot-06-journey-800.webp 800w, assets/shot-06-journey-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 380px" width="800" height="450" loading="lazy" alt="The Journey map, a path of rival nodes across a moonlit landscape">
-        <div class="mode-copy">
-          <p class="mode-tag">Start here</p>
-          <h3>Journey</h3>
-          <p>A 12-node campaign that teaches the game rival by rival and unlocks the Footman and the Lich.</p>
-        </div>
-      </article>
-      <article class="mode">
-        <img src="assets/shot-07-ascendant-trials-800.webp" srcset="assets/shot-07-ascendant-trials-800.webp 800w, assets/shot-07-ascendant-trials-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 380px" width="800" height="450" loading="lazy" alt="Ascendant Trials, choosing between Classic, Tactical and the Weekly Trial">
-        <div class="mode-copy">
-          <p class="mode-tag">Keep climbing</p>
-          <h3>Ascendant Trials</h3>
-          <p>A roguelike climb of 14 floors with Boons, elites, a boss, an endless climb beyond it and a Weekly Trial. Then test your build against other players&#8217; Rival Echoes.</p>
-        </div>
-      </article>
-    </div>
-    <ul class="mode-list">
-      <li><h3>VS AI</h3><p>Set the rules, choose your rival and its difficulty.</p></li>
-      <li><h3>Hotseat</h3><p>Two players, one device.</p></li>
-      <li><h3>Friend Duel</h3><p>A PvP wizard duel against a friend online, with a private code.</p></li>
-    </ul>
-    <p class="note">Plays offline. Friend Duel, cloud save, the Weekly Trial and leaderboards need an internet connection. Accessibility options include Reduced Motion, Large Text, subtitles and UI scale.</p>
-  </section>
-
-  <!-- 3b. Duelists -->
+  <!-- 5. Duelists -->
   <section class="section" id="duelists" aria-labelledby="duelists-title">
     <div class="section-head">
       <p class="kicker">Twelve duelists</p>
@@ -374,36 +403,69 @@
     </ul>
   </section>
 
-  <!-- 4. Screenshots -->
-  <section class="section" id="screenshots" aria-labelledby="shots-title">
+  <!-- 6. Modes -->
+  <section class="section" id="modes" aria-labelledby="modes-title">
     <div class="section-head">
-      <p class="kicker">From the game</p>
-      <h2 id="shots-title">Screenshots</h2>
+      <p class="kicker">Five ways to play</p>
+      <h2 id="modes-title">Your next challenge <span class="gold">awaits.</span></h2>
     </div>
-    <ul class="gallery">
-      <li><a href="assets/shot-02-planning-1600.webp"><img src="assets/shot-02-planning-800.webp" width="800" height="450" loading="lazy" alt="Planning a turn, with the spell wheel and both duelists’ mana on screen"></a></li>
-      <li><a href="assets/shot-05-guard-1600.webp"><img src="assets/shot-05-guard-800.webp" width="800" height="450" loading="lazy" alt="A Guard catches an incoming Grass spell"></a></li>
-      <li><a href="assets/shot-03-clash-1600.webp"><img src="assets/shot-03-clash-800.webp" width="800" height="450" loading="lazy" alt="Two spells collide between the duelists"></a></li>
-      <li><a href="assets/shot-01-convergence-1600.webp"><img src="assets/shot-01-convergence-800.webp" width="800" height="450" loading="lazy" alt="Convergence strikes the rival"></a></li>
-      <li><a href="assets/shot-04-arcane-veto-1600.webp"><img src="assets/shot-04-arcane-veto-800.webp" width="800" height="450" loading="lazy" alt="The Arcane Veto with five Arcana cards"></a></li>
-      <li><a href="assets/shot-06-journey-1600.webp"><img src="assets/shot-06-journey-800.webp" width="800" height="450" loading="lazy" alt="The Journey campaign map"></a></li>
-      <li><a href="assets/shot-07-ascendant-trials-1600.webp"><img src="assets/shot-07-ascendant-trials-800.webp" width="800" height="450" loading="lazy" alt="Choosing an Ascendant Trial"></a></li>
-      <li><a href="assets/shot-08-modes-1600.webp"><img src="assets/shot-08-modes-800.webp" width="800" height="450" loading="lazy" alt="The main menu with the game modes"></a></li>
+    <div class="modes">
+      <article class="mode">
+        <img src="assets/shot-06-journey-800.webp" srcset="assets/shot-06-journey-800.webp 800w, assets/shot-06-journey-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 560px" width="800" height="450" loading="lazy" alt="The Journey map, a path of rival nodes across a moonlit landscape">
+        <div class="mode-copy">
+          <p class="mode-tag">Start here</p>
+          <h3>Journey</h3>
+          <p>A two-act campaign of 24 duels. Act I teaches the game rival by rival; Act II brings every rival back stronger.</p>
+        </div>
+      </article>
+      <article class="mode">
+        <img src="assets/shot-07-ascendant-trials-800.webp" srcset="assets/shot-07-ascendant-trials-800.webp 800w, assets/shot-07-ascendant-trials-1600.webp 1600w" sizes="(max-width: 860px) 92vw, 560px" width="800" height="450" loading="lazy" alt="Ascendant Trials, choosing between Classic, Tactical and the Weekly Trial">
+        <div class="mode-copy">
+          <p class="mode-tag">Keep climbing</p>
+          <h3>Ascendant Trials</h3>
+          <p>A roguelike climb of 14 floors with Boons, elites, a boss, an endless climb beyond it and a Weekly Trial. Then test your build against other players&#8217; Rival Echoes.</p>
+        </div>
+      </article>
+    </div>
+    <ul class="mode-list">
+      <li><h3>VS AI</h3><p>Set the rules, choose your rival and its difficulty.</p></li>
+      <li><h3>Hotseat</h3><p>Two players, one device.</p></li>
+      <li><h3>Friend Duel</h3><p>A PvP wizard duel against a friend online: share a private code to start.</p></li>
     </ul>
   </section>
 
-  <!-- 5. Get the game -->
-  <section class="section join" id="join" aria-labelledby="join-title">
+  <!-- 7. Why it is worth buying -->
+  <section class="section" id="why" aria-labelledby="why-title">
     <div class="section-head">
-      <p class="kicker">Out now</p>
-      <h2 id="join-title">Get it on Google Play</h2>
-      <p class="lede">For Android phones and tablets. A paid game with no ads: Google Play shows the price for your&nbsp;country.</p>
+      <p class="kicker">Why play</p>
+      <h2 id="why-title">A complete strategy game. <span class="gold">No ads. Just magic.</span></h2>
     </div>
-    <div class="get">
-      <a class="play-badge play-badge-xl" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank"><img src="assets/google-play-badge.png" width="564" height="168" alt="Get it on Google Play"></a>
-      <p class="addr">play.google.com/store/apps/details?id=com.unleech.standoff</p>
+    <ul class="why">
+      <li><strong>No ads.</strong> Nothing between you and the duel.</li>
+      <li><strong>A full campaign.</strong> Two acts, 24 duels, every rival.</li>
+      <li><strong>A roguelike climb.</strong> 14 floors, a boss, an endless climb and a Weekly Trial.</li>
+      <li><strong>Twelve duelists.</strong> Voiced heroes and rivals, each with a passive of their own.</li>
+      <li><strong>45 Arcana.</strong> Rules that change from duel to duel.</li>
+      <li><strong>Play your way.</strong> VS AI at your difficulty, Hotseat on one device, Friend Duel online.</li>
+      <li><strong>Something to chase.</strong> Cosmetics, school mastery and weekly goals.</li>
+      <li><strong>Made to be comfortable.</strong> Reduced Motion, Large Text, subtitles and UI scale.</li>
+    </ul>
+    <p class="note">Plays offline. Friend Duel, cloud save, the Weekly Trial and leaderboards need an internet connection.</p>
+  </section>
+
+  <!-- 8. The final call -->
+  <section class="final" id="join" aria-labelledby="join-title">
+    <picture class="final-bg">
+      <source type="image/webp" srcset="assets/video-stand-your-ground-640.webp 640w, assets/video-stand-your-ground-1280.webp 1280w" sizes="100vw">
+      <img src="assets/video-stand-your-ground-1280.webp" width="1280" height="720" loading="lazy" alt="">
+    </picture>
+    <div class="final-inner">
+      <p class="kicker">Out now on Android</p>
+      <h2 id="join-title">Think you can <span class="gold">outsmart a wizard?</span></h2>
+      <p class="final-line">Choose your spells. Read your rival. Claim victory.</p>
+      <a class="play-badge play-badge-xl" href="https://play.google.com/store/apps/details?id=com.unleech.standoff" rel="noopener" target="_blank" data-cta="final"><img src="assets/google-play-badge.png" width="564" height="168" loading="lazy" alt="Get it on Google Play"></a>
+      <p class="final-note">For Android phones and tablets. A paid game with no ads: Google Play shows the price for your&nbsp;country.</p>
     </div>
-    <p class="note">The free alpha signup has closed. Thank you to everyone who tested the game and sent feedback.</p>
   </section>
 
   <!-- 6. Feedback: where to send it and what helps -->
@@ -484,8 +546,8 @@
       </div>
     </div>
   </section>
-
 </main>
+
 
 <footer class="site-footer">
   <div class="foot-inner">
@@ -515,3 +577,4 @@
 <!-- Cloudflare Web Analytics: cookie-free visit counts (see the privacy policy) --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "668414665a1d4cda9459548069fe21a7"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+

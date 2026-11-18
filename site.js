@@ -1,4 +1,29 @@
-// StandOff: Enchanted — small enhancements. Everything works as plain links without this file.
+// StandOff: Enchanted: small enhancements. Everything works as plain links without this file.
+
+// Click tracking, ready for a cookie-free counter and silent without one. track() hands an event to whichever of
+// GoatCounter, Plausible or Umami the page loads (none does yet: Cloudflare Web Analytics, which counts visits, has
+// no events). Events: a Google Play button pressed (play/<where>: header, hero, gameplay, final), the gameplay video
+// played with sound, a trailer opened (trailer/<YouTube id>), and the gameplay and final sections reached once a visit.
+function track(name, label) {
+  const path = label ? `${name}/${label}` : name;
+  try {
+    if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path, title: path, event: true });
+    else if (window.plausible) window.plausible(name, label ? { props: { where: label } } : undefined);
+    else if (window.umami && window.umami.track) window.umami.track(name, label ? { where: label } : undefined);
+  } catch (error) { /* a blocked or missing counter never breaks the page */ }
+}
+document.querySelectorAll('[data-cta]').forEach((link) => link.addEventListener('click', () => track('play', link.dataset.cta)));
+document.querySelectorAll('a[data-video]').forEach((link) => link.addEventListener('click', () => track('trailer', link.dataset.video)));
+if ('IntersectionObserver' in window) {
+  [['#gameplay', 'reached-gameplay'], ['#join', 'reached-final']].forEach(([selector, name]) => {
+    const section = document.querySelector(selector);
+    if (!section) return;
+    const seen = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) { track(name); seen.disconnect(); }
+    }, { rootMargin: '0px 0px -50% 0px' });   // its top has passed the middle of the screen (it can be taller than one)
+    seen.observe(section);
+  });
+}
 
 // Trailers: each preview is a link to YouTube. With JavaScript, pressing it opens the privacy-enhanced player
 // large, in a viewer over the page (Escape, the close button or a click outside closes it and stops the video);
@@ -98,6 +123,68 @@ document.querySelectorAll('.duelist').forEach((card) => {
   card.addEventListener('focus', () => { if (card.matches(':focus-visible')) play(); });
   card.addEventListener('blur', stop);
 });
+
+// The gameplay video in the hero (self-hosted, 28.8 s, a loop). Without JavaScript it is a plain video with controls
+// that loads nothing until played. With it: on a wide screen, unless the visitor prefers reduced motion or saves data,
+// it plays muted and looping while in view (the 720p file, about 5 MB), with a Sound on button; on a phone it waits for
+// a tap and then plays with sound (the 480p file, about 2.6 MB, or the upright cut below). "Watch gameplay" plays it with sound from the start.
+const heroVideo = document.querySelector('video.gameplay');
+if (heroVideo) {
+  const frame = heroVideo.closest('.video-frame');
+  const start = frame.querySelector('.video-start');
+  const sound = frame.querySelector('.video-sound');
+  const saveData = navigator.connection && navigator.connection.saveData;
+  const wide = window.matchMedia('(min-width: 981px)');
+  const ambient = wide.matches && !calmMotion() && !saveData;
+  // A phone held upright gets the upright cut of the loop (540 x 960, about 3.5 MB), framed 9:16.
+  const upright = window.matchMedia('(max-width: 700px) and (orientation: portrait)').matches && heroVideo.dataset.srcPortrait;
+  heroVideo.controls = false;
+  if (upright) {
+    frame.classList.add('portrait');
+    heroVideo.poster = heroVideo.dataset.posterPortrait;
+    heroVideo.src = heroVideo.dataset.srcPortrait;
+  } else heroVideo.src = ambient ? heroVideo.dataset.srcLarge : heroVideo.dataset.srcSmall;
+  // The Sound button belongs to the silent preview; once the player's own controls are up, they carry the volume.
+  const showSound = () => {
+    sound.hidden = heroVideo.controls;
+    sound.setAttribute('aria-pressed', String(!heroVideo.muted));
+    sound.textContent = heroVideo.muted ? 'Sound on' : 'Sound off';
+  };
+  let soundCounted = false;
+  const playWithSound = () => {
+    if (!soundCounted) { soundCounted = true; track('gameplay-video'); }
+    start.hidden = true;
+    heroVideo.muted = false;
+    heroVideo.controls = true;
+    heroVideo.play().catch(() => {});
+    showSound();
+  };
+  start.addEventListener('click', playWithSound);
+  sound.addEventListener('click', () => {
+    heroVideo.muted = !heroVideo.muted;
+    heroVideo.controls = true;
+    showSound();
+  });
+  if (ambient) {
+    heroVideo.muted = true;
+    heroVideo.preload = 'auto';
+    showSound();
+    // Plays only while on screen, so it never runs (or downloads more) unseen.
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) heroVideo.play().catch(() => { start.hidden = false; });
+        else heroVideo.pause();
+      });
+    }, { threshold: 0.25 }).observe(heroVideo);
+  } else start.hidden = false;
+  document.querySelectorAll('[data-watch]').forEach((link) => link.addEventListener('click', (event) => {
+    event.preventDefault();
+    frame.scrollIntoView({ behavior: calmMotion() ? 'auto' : 'smooth', block: 'center' });
+    heroVideo.currentTime = 0;
+    playWithSound();
+  }));
+}
+function calmMotion() { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
 
 // The logo's emblem comes alive once the page has loaded (so it never slows the first paint): an animated copy of
 // just the hexagon is laid over it, its first frame identical to the logo. Never under reduced motion.
