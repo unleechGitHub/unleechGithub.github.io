@@ -175,6 +175,7 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 
 /* ---------------------------------------------------------------- trailers */
 .trailers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 32px); }
+.trailer-feature { grid-column: 1 / -1; }
 .trailer-frame {
   position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden;
   border-radius: var(--radius); border: 1px solid var(--line-strong); background: #000;
@@ -261,6 +262,14 @@ h3 { font-size: 1.3rem; line-height: 1.3; letter-spacing: 0.01em; }
 
 /* ---------------------------------------------------------------- join */
 .join { position: relative; }
+/* The official Google Play badge: unaltered artwork, always linking to the store listing. */
+.play-badge { display: inline-flex; line-height: 0; border-radius: 10px; }
+.play-badge img { height: 48px; width: auto; }
+.play-badge-large img { height: 56px; }
+.play-badge-xl img { height: 64px; }
+.play-badge:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 4px; }
+.get { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.get .addr { margin: 0; font-size: .9rem; color: var(--dim); word-break: break-all; }
 .join::before {
   content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   /* closest-side: the glow fades out before it reaches any edge, so it never shows a hard border */
